@@ -18,7 +18,7 @@ This is an interview challenge for Paytm Labs.
 
 ## Outputs:
 
-###Analytics Challenge-1 ==> Sessionize by IP:
+### Analytics Challenge-1 ==> Sessionize by IP:
 ```
 +---------------+-------------+--------------------+--------------------+
 |     session_id|     clientIp|       session_start|         session_end|
@@ -36,7 +36,9 @@ This is an interview challenge for Paytm Labs.
 +---------------+-------------+--------------------+--------------------+
 only showing top 10 rows
 ```
-*Analytics Challenge-2 ==> Average Session Length: 574.5947358163104 (secs)*
+
+**Analytics Challenge-2 ==> Average Session Length: 574.5947358163104 (secs)**
+
 ```
 Analytics Challenge-3 ==> Unique URL visits by Session:
 +---------------+-------------+-------------+
