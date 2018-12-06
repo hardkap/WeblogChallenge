@@ -17,8 +17,9 @@ This is an interview challenge for Paytm Labs.
 ```WebLog.main(Array("/path/to/web_log.gz", "103.24.23.10"))```
 
 ## Outputs:
+
+###Analytics Challenge-1 ==> Sessionize by IP:
 ```
-Analytics Challenge-1 ==> Sessionize by IP:
 +---------------+-------------+--------------------+--------------------+
 |     session_id|     clientIp|       session_start|         session_end|
 +---------------+-------------+--------------------+--------------------+
@@ -34,8 +35,9 @@ Analytics Challenge-1 ==> Sessionize by IP:
 |  1.23.226.88_0|  1.23.226.88|2015-07-22 16:43:...|2015-07-22 16:55:...|
 +---------------+-------------+--------------------+--------------------+
 only showing top 10 rows
-
-Analytics Challenge-2 ==> Average Session Length: 574.5947358163104 (secs)
+```
+*Analytics Challenge-2 ==> Average Session Length: 574.5947358163104 (secs)*
+```
 Analytics Challenge-3 ==> Unique URL visits by Session:
 +---------------+-------------+-------------+
 |     session_id|     clientIp|distinct_urls|
