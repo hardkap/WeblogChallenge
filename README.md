@@ -2,7 +2,7 @@
 This is an interview challenge for Paytm Labs. 
 
 ## Run environment:
-1. This was tested in databricks community edition - notebook environment. WebLog-Notebook.html is the output from this run.
+1. This was tested in databricks community edition - notebook environment. WebLog-Notebook.html is the output from this run. If you have an account on databricks (community edition is free), you can import the notebook from this html file and run it.
 
 2. This was also tested in spark-shell (Spark 2.2.1). Refer to WebLog.scala
 
