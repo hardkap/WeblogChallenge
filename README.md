@@ -1,65 +1,94 @@
 # WeblogChallenge
-This is an interview challenge for Paytm Labs. Please feel free to fork. Pull Requests will be ignored.
+This is an interview challenge for Paytm Labs. 
 
-The challenge is to make make analytical observations about the data using the distributed tools below.
+## Run environment:
+1. This was tested in databricks community edition - notebook environment. WebLog-Notebook.html is the output from this run.
 
-## Processing & Analytical goals:
+2. This was also tested in spark-shell (Spark 2.2.1). Refer to WebLog.scala
 
-1. Sessionize the web log by IP. Sessionize = aggregrate all page hits by visitor/IP during a session.
-    https://en.wikipedia.org/wiki/Session_(web_analytics)
+## Running in spark-shell:
 
-2. Determine the average session time
+1. Run spark-shell from the command line (assuming Spark 2.2.1 is installed and spark-shell is available in the path)
 
-3. Determine unique URL visits per session. To clarify, count a hit to a unique URL only once per session.
+2. In the spark-shell, load the scala file.
+```:load WebLog.scala```
 
-4. Find the most engaged users, ie the IPs with the longest session times
+3. Run the main function. Pass the location of the weblog file and the IP for which the 2nd and 3rd prediction needs to be done. This will run all other functions and generate the outputs for all the challenges.
+```WebLog.main(Array("/path/to/web_log.gz", "103.24.23.10"))
 
-## Additional questions for Machine Learning Engineer (MLE) candidates:
-1. Predict the expected load (requests/second) in the next minute
+## Outputs:
+```
+Analytics Challenge-1 ==> Sessionize by IP:
++---------------+-------------+--------------------+--------------------+
+|     session_id|     clientIp|       session_start|         session_end|
++---------------+-------------+--------------------+--------------------+
+|  1.186.41.12_0|  1.186.41.12|2015-07-22 21:16:...|2015-07-22 21:16:...|
+|   1.186.41.1_1|   1.186.41.1|2015-07-22 18:11:...|2015-07-22 18:13:...|
+|  1.186.76.11_1|  1.186.76.11|2015-07-22 17:42:...|2015-07-22 18:17:...|
+| 1.187.110.59_0| 1.187.110.59|2015-07-22 10:44:...|2015-07-22 10:44:...|
+|1.187.180.126_0|1.187.180.126|2015-07-22 09:12:...|2015-07-22 09:12:...|
+|1.187.228.210_0|1.187.228.210|2015-07-22 16:21:...|2015-07-22 16:35:...|
+| 1.187.228.88_0| 1.187.228.88|2015-07-22 10:32:...|2015-07-22 10:45:...|
+| 1.22.187.226_0| 1.22.187.226|2015-07-22 17:53:...|2015-07-22 17:53:...|
+| 1.23.101.102_0| 1.23.101.102|2015-07-22 16:49:...|2015-07-22 16:55:...|
+|  1.23.226.88_0|  1.23.226.88|2015-07-22 16:43:...|2015-07-22 16:55:...|
++---------------+-------------+--------------------+--------------------+
+only showing top 10 rows
 
-2. Predict the session length for a given IP
+Analytics Challenge-2 ==> Average Session Length: 574.5947358163104 (secs)
+Analytics Challenge-3 ==> Unique URL visits by Session:
++---------------+-------------+-------------+
+|     session_id|     clientIp|distinct_urls|
++---------------+-------------+-------------+
+|  1.186.41.12_0|  1.186.41.12|            1|
+|   1.186.41.1_1|   1.186.41.1|            3|
+|  1.186.76.11_1|  1.186.76.11|           17|
+| 1.187.110.59_0| 1.187.110.59|            1|
+|1.187.180.126_0|1.187.180.126|            1|
+|1.187.228.210_0|1.187.228.210|            5|
+| 1.187.228.88_0| 1.187.228.88|            5|
+| 1.22.187.226_0| 1.22.187.226|            1|
+| 1.23.101.102_0| 1.23.101.102|            6|
+|  1.23.226.88_0|  1.23.226.88|            2|
++---------------+-------------+-------------+
+only showing top 10 rows
 
-3. Predict the number of unique URL visits by a given IP
+Analytics Challenge-4 ==> Most Engaged IPs:
++--------------+---------------------+
+|      clientIp|session_length (secs)|
++--------------+---------------------+
+| 220.226.206.7|               4097.0|
+|  52.74.219.71|               3042.0|
+| 119.81.61.166|               3039.0|
+|  52.74.219.71|               3030.0|
+| 54.251.151.39|               3029.0|
+|103.29.159.186|               3024.0|
+| 119.81.61.166|               3022.0|
+| 123.63.241.40|               3009.0|
+| 202.134.59.72|               3008.0|
+|103.29.159.138|               3007.0|
++--------------+---------------------+
+only showing top 10 rows
 
-## Tools allowed (in no particular order):
-- Spark (any language, but prefer Scala or Java)
-- Pig
-- MapReduce (Hadoop 2.x only)
-- Flink
-- Cascading, Cascalog, or Scalding
+Machine Learning Challenge-1 ==> Requests/sec in the next Minute: 12
+Machine Learning Challenge-2 ==> Session Length for a given IP (including previous sessions):
++---------+--------------+
+|  session|session_length|
++---------+--------------+
+| existing|         966.0|
+| existing|        2010.0|
+| existing|         392.0|
+|predicted|         863.0|
++---------+--------------+
 
-If you need Hadoop, we suggest 
-HDP Sandbox:
-http://hortonworks.com/hdp/downloads/
-or 
-CDH QuickStart VM:
-http://www.cloudera.com/content/cloudera/en/downloads.html
+Machine Learning Challenge-3 ==> Unique Urls for a given IP (including previous sessions):
++---------+-------------+
+|  session|distinct_urls|
++---------+-------------+
+| existing|         39.0|
+| existing|          9.0|
+| existing|          2.0|
+|predicted|         18.0|
++---------+-------------+
 
-
-### Additional notes:
-- You are allowed to use whatever libraries/parsers/solutions you can find provided you can explain the functions you are implementing in detail.
-- IP addresses do not guarantee distinct users, but this is the limitation of the data. As a bonus, consider what additional data would help make better analytical conclusions
-- For this dataset, complete the sessionization by time window rather than navigation. Feel free to determine the best session window time on your own, or start with 15 minutes.
-- The log file was taken from an AWS Elastic Load Balancer:
-http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/access-log-collection.html#access-log-entry-format
-
-
-
-## How to complete this challenge:
-
-A. Fork this repo in github
-    https://github.com/PaytmLabs/WeblogChallenge
-
-B. Complete the processing and analytics as defined first to the best of your ability with the time provided.
-
-C. Place notes in your code to help with clarity where appropriate. Make it readable enough to present to the Paytm Labs interview team.
-
-D. Complete your work in your own github repo and send the results to us and/or present them during your interview.
-
-## What are we looking for? What does this prove?
-
-We want to see how you handle:
-- New technologies and frameworks
-- Messy (ie real) data
-- Understanding data transformation
-This is not a pass or fail test, we want to hear about your challenges and your successes with this particular problem.
+```
