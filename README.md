@@ -14,7 +14,7 @@ This is an interview challenge for Paytm Labs.
 ```:load WebLog.scala```
 
 3. Run the main function. Pass the location of the weblog file and the IP for which the 2nd and 3rd prediction needs to be done. This will run all other functions and generate the outputs for all the challenges.
-```WebLog.main(Array("/path/to/web_log.gz", "103.24.23.10"))
+```WebLog.main(Array("/path/to/web_log.gz", "103.24.23.10"))```
 
 ## Outputs:
 ```
