@@ -18,7 +18,7 @@ This is an interview challenge for Paytm Labs.
 
 ## Outputs:
 
-### Analytics Challenge-1 ==> Sessionize by IP:
+**Analytics Challenge-1 ==> Sessionize by IP:**
 ```
 +---------------+-------------+--------------------+--------------------+
 |     session_id|     clientIp|       session_start|         session_end|
@@ -39,8 +39,8 @@ only showing top 10 rows
 
 **Analytics Challenge-2 ==> Average Session Length: 574.5947358163104 (secs)**
 
+**Analytics Challenge-3 ==> Unique URL visits by Session:**
 ```
-Analytics Challenge-3 ==> Unique URL visits by Session:
 +---------------+-------------+-------------+
 |     session_id|     clientIp|distinct_urls|
 +---------------+-------------+-------------+
@@ -56,8 +56,10 @@ Analytics Challenge-3 ==> Unique URL visits by Session:
 |  1.23.226.88_0|  1.23.226.88|            2|
 +---------------+-------------+-------------+
 only showing top 10 rows
+```
 
-Analytics Challenge-4 ==> Most Engaged IPs:
+**Analytics Challenge-4 ==> Most Engaged IPs:**
+```
 +--------------+---------------------+
 |      clientIp|session_length (secs)|
 +--------------+---------------------+
@@ -73,9 +75,12 @@ Analytics Challenge-4 ==> Most Engaged IPs:
 |103.29.159.138|               3007.0|
 +--------------+---------------------+
 only showing top 10 rows
+```
 
-Machine Learning Challenge-1 ==> Requests/sec in the next Minute: 12
-Machine Learning Challenge-2 ==> Session Length for a given IP (including previous sessions):
+**Machine Learning Challenge-1 ==> Requests/sec in the next Minute: 12**
+
+**Machine Learning Challenge-2 ==> Session Length for a given IP (including previous sessions):**
+```
 +---------+--------------+
 |  session|session_length|
 +---------+--------------+
@@ -84,8 +89,10 @@ Machine Learning Challenge-2 ==> Session Length for a given IP (including previo
 | existing|         392.0|
 |predicted|         863.0|
 +---------+--------------+
+```
 
-Machine Learning Challenge-3 ==> Unique Urls for a given IP (including previous sessions):
+**Machine Learning Challenge-3 ==> Unique Urls for a given IP (including previous sessions):**
+```
 +---------+-------------+
 |  session|distinct_urls|
 +---------+-------------+
@@ -94,5 +101,4 @@ Machine Learning Challenge-3 ==> Unique Urls for a given IP (including previous 
 | existing|          2.0|
 |predicted|         18.0|
 +---------+-------------+
-
 ```
